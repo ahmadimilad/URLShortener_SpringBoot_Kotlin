@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Create Short URL - Zarebin</title>
+    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+    <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+</head>
+<body>
+<br>
+<br>
+<br>
+<div class="container text-center">
+    <div>
+        <h1>CREATE SHORT URL</h1>
+    </div>
+    <form target="_blank" th:action="@{/url/created_url}" th:object="${url}"
+          method="post" style="max-width: 600px; margin: 0 auto;">
+        <div class="m-3">
+            <div class="form-group row">
+                <label class="col-4 col-form-label">Original Url: </label>
+                <div class="col-8">
+                    <input type="url" th:field="*{originalUrl}" class="form-control" required />
+                </div>
+            </div>
+
+            <div>
+                <button  type="submit"  class="btn btn-primary">Create</button>
+            </div>
+        </div>
+    </form>
+</div>
+<script>
+    $(document).ready(function() {
+        function disableBack() { window.history.forward() }
+
+        window.onload = disableBack();
+        window.onpageshow = function(evt) { if (evt.persisted) disableBack() }
+    });
+</script>
+</body>
+</html>

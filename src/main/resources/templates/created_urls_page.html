@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Created URL - Zarebin</title>
+    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css"/>
+    <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container text-center">
+    <div class="m-3" style="margin-top: 250px">
+        <h1>Your shortener Link is:
+            <a target="_blank" href="posts/view.html" th:text="${shortenString}" th:href="@{${shortenString}}"></a>
+        </h1>
+    </div>
+    <div class="row" style="margin-top: 100px">
+        <form class="col-md-6" target="_blank" th:action="@{/url/create_short_url}" method="get">
+            <button type="submit" class="btn btn-primary">Back to Create Short url</button>
+        </form>
+
+        <form class="col-md-6"  target="_blank"  th:action="@{/url/list}" method="get">
+            <button type="submit" class="btn btn-primary">URLs List</button>
+        </form>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function() {
+        function disableBack() { window.history.forward() }
+
+        window.onload = disableBack();
+        window.onpageshow = function(evt) { if (evt.persisted) disableBack() }
+    });
+</script>
+</body>
+</html>
