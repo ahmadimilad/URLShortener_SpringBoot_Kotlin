@@ -1,1 +1,1 @@
-# Zarebin_URLShortener_SpringBoot
+# URLShortener_SpringBoot
